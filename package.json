@@ -1,6 +1,6 @@
 {
   "name": "@jonahplusplus/beaut",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A TypeScript library for semi-functional programming patterns",
   "homepage": "https://github.com/JonahPlusPlus/beaut#readme",
   "repository": {
@@ -14,8 +14,8 @@
     "algebraic-data-types",
     "functional-programming"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "doc": "typedoc",
@@ -43,8 +43,5 @@
     "typedoc-plugin-markdown": "^4.0.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.10.0"
-  },
-  "files": [
-    "/dist"
-  ]
+  }
 }
