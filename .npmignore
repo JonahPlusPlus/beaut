@@ -1,0 +1,5 @@
+/.github
+/.pnpm-store
+/node_modules
+/docs
+/examples

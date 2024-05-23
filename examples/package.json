@@ -1,0 +1,10 @@
+{
+  "name": "examples",
+  "private": "true",
+  "dependencies": {
+    "beaut": "file:../dist"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}

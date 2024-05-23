@@ -1,0 +1,8 @@
+{
+  "plugin": ["typedoc-plugin-markdown", "typedoc-github-wiki-theme"],
+  "entryPointStrategy": "resolve",
+  "entryPoints": ["src", "src/future", "src/option", "src/result"],
+  "indexFormat": "table",
+  "exclude": ["**/*.test.ts"],
+  "out": "docs"
+}
