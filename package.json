@@ -1,7 +1,19 @@
 {
   "name": "@jonahplusplus/beaut",
   "version": "0.1.0",
-  "description": "",
+  "description": "A TypeScript library for semi-functional programming patterns",
+  "homepage": "https://github.com/JonahPlusPlus/beaut#readme",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/JonahPlusPlus/beaut.git"
+  },
+  "author": "JonahPlusPlus",
+  "license": "(MIT OR Apache-2.0)",
+  "keywords": [
+    "typescript",
+    "algebraic-data-types",
+    "functional-programming"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,9 +21,6 @@
     "doc": "typedoc",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "JonahPlusPlus",
-  "license": "(MIT OR Apache-2.0)",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.11",
