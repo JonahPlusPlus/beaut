@@ -1,3 +1,6 @@
+/**
+ * Performs a series of operations.
+ */
 export function pipe<A>(a: A): A;
 export function pipe<A, B>(a: A, ab: (_: A) => B): B;
 export function pipe<A, B, C>(a: A, ab: (_: A) => B, bc: (_: B) => C): C;
@@ -190,11 +193,12 @@ export function pipe(
           args[6](args[5](args[4](args[3](args[2](args[1](args[0](input))))))),
         ),
       );
-    default:
+    default: {
       let out = input;
       for (let i = 0; i < args.length; i++) {
         out = args[i](out);
       }
       return out;
+    }
   }
 }

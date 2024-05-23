@@ -390,7 +390,7 @@ export function getOrInsertWith<T>(f: () => T): (self: Option<T>) => Mut<T> {
  */
 export function take<T>(self: Option<T>): Option<T> {
   assertDefined(self);
-  let o = new Option(self["inner"]);
+  const o = new Option(self["inner"]);
   self["inner"] = { _some: false };
   return o;
 }
@@ -418,7 +418,7 @@ export function takeIf<T>(
 export function replace<T>(value: T): (self: Option<T>) => Option<T> {
   return function (self: Option<T>) {
     assertDefined(self);
-    let o = new Option(self["inner"]);
+    const o = new Option(self["inner"]);
     self["inner"] = { _some: true, content: { value } };
     return o;
   };

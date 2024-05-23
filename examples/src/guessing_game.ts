@@ -1,4 +1,4 @@
-import { chain } from "beaut";
+import { chain, tryCatch } from "beaut";
 import * as F from "beaut/future";
 import * as O from "beaut/option";
 import * as readline from "readline";
@@ -18,7 +18,7 @@ const getLine: F.Future<string> = (resolve) => {
 /** Asks a question and gets an answer. */
 async function ask(question: string) {
   console.log(question);
-  return await F.Task(getLine);
+  return await F.run(getLine);
 }
 
 /** Parses a `string` to `Option<number>`. */

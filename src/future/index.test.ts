@@ -3,14 +3,14 @@ import * as R from "../result";
 import { chain } from "..";
 
 test("basic task", async () => {
-  let task = F.spawn<number>((resolve) => {
+  const task = F.spawn<number>((resolve) => {
     resolve(3);
   });
   await expect(F.use(task)).resolves.toBe(3);
 });
 
 test("cancel task resolve", async () => {
-  let task = F.spawn<number>((resolve) => {
+  const task = F.spawn<number>((resolve) => {
     resolve(3);
   });
   F.cancel(task);
@@ -18,7 +18,7 @@ test("cancel task resolve", async () => {
 });
 
 test("cancel task reject", async () => {
-  let task = F.spawn<number>((resolve) => {
+  const task = F.spawn<number>((resolve) => {
     const to = setTimeout(resolve, 3000, 3);
     return () => {
       clearTimeout(to);

@@ -34,7 +34,7 @@ test("unwrap some", () => {
 
 test("expect some", () => {
   const s = O.Some(2);
-  let v = O.expect("bad")(s);
+  const v = O.expect("bad")(s);
   expect(v).toBe(2);
   expect(() => O.take(s)).toThrow();
 });
@@ -164,12 +164,12 @@ test("and some", () => {
 
 test("andThen none", () => {
   expect(
-    chain(O.None<number>())(O.andThen((_) => O.None())).end(),
+    chain(O.None<number>())(O.andThen(() => O.None())).end(),
   ).toStrictEqual(O.None());
   expect(
     chain(O.None<number>())(O.andThen((v) => O.Some(2 + v))).end(),
   ).toStrictEqual(O.None());
-  expect(chain(O.Some(2))(O.andThen((_) => O.None())).end()).toStrictEqual(
+  expect(chain(O.Some(2))(O.andThen(() => O.None())).end()).toStrictEqual(
     O.None(),
   );
 });

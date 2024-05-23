@@ -34,7 +34,7 @@ test("unwrap ok", () => {
 
 test("expect ok", () => {
   const o = R.Ok(2);
-  let v = R.expect("bad")(o);
+  const v = R.expect("bad")(o);
   expect(v).toBe(2);
   expect(() => R.drop(o)).toThrow();
 });
@@ -71,7 +71,7 @@ test("unwrapErr err", () => {
 
 test("expectErr err", () => {
   const e = R.Err("err");
-  let v = R.expectErr("bad")(e);
+  const v = R.expectErr("bad")(e);
   expect(v).toBe("err");
   expect(() => R.drop(e)).toThrow();
 });

@@ -1,4 +1,4 @@
-import { Mut, chain, empty } from "..";
+import { Mut } from "..";
 import * as R from "../result";
 
 /**
@@ -17,7 +17,7 @@ interface TaskInner<T> {
 }
 
 /**
- * An extended definition of `Promise<T>`.
+ * An extension of `Promise<T>`.
  *
  * A task may be canceled.
  */
@@ -33,11 +33,11 @@ export class Task<T> {
  * Spawns a new task from a future.
  */
 export function spawn<T>(fut: Future<T>): Task<T> {
-  let status: Mut<TaskStatus> = {
+  const status: Mut<TaskStatus> = {
     value: TaskStatus.Pending,
   };
   let cancel: () => void;
-  let promise = new Promise<T>((_resolve, _reject) => {
+  const promise = new Promise<T>((_resolve, _reject) => {
     const resolve = (value: T | PromiseLike<T>) => {
       _resolve(value);
       status.value = TaskStatus.Resolved;
@@ -70,17 +70,26 @@ export function use<T>(self: Task<T>): Promise<T> {
 
 /** Immediately checks if a task is pending. */
 export function isPending(task: Task<any>): boolean {
+  assertDefined(task);
   return task["inner"].status.value === TaskStatus.Pending;
 }
 
 /** Immediately checks if a task is resolved. */
 export function isResolved(task: Task<any>) {
+  assertDefined(task);
   return task["inner"].status.value === TaskStatus.Resolved;
 }
 
 /** Immediately checks if a task is rejected. */
 export function isRejected(task: Task<any>) {
+  assertDefined(task);
   return task["inner"].status.value === TaskStatus.Rejected;
+}
+
+/** Returns the current status of the task. */
+export function status(task: Task<any>): TaskStatus {
+  assertDefined(task);
+  return task["inner"].status.value;
 }
 
 /**
@@ -116,6 +125,15 @@ export type Future<T> = (
   resolve: (value: T | PromiseLike<T>) => void,
   reject: (reason?: any) => void,
 ) => (() => void) | void;
+
+/**
+ * Runs a future.
+ *
+ * Similar to `spawn`, but returns a promise instead of a task.
+ */
+export function run<T>(fut: Future<T>): Promise<T> {
+  return new Promise(fut);
+}
 
 /**
  * Map this future’s output to a different type, returning a new future of the resulting type.
