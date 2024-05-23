@@ -3,8 +3,10 @@
     "module": "commonjs",
     "target": "es2019",
     "declaration": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "src/index.ts"],
+  "include": ["src/**/*.ts", "src/index.ts", "./package.json"],
   "exclude": ["src/**/*.test.ts"]
+  
 }
